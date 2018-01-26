@@ -12,8 +12,12 @@
 替换所有的MySQLdb调用为pymysql
 替换所有的cusorclass=为空格
 
-### firefly
+### gfirefly
 替换所有的firefly为gfirefly
 pip install pyzmq
 
 替换所有from gevent-zmq为空格
+
+### gtwisted
+框架内部已经换成gtwisted了
+外部还有少量的twisted修改的时候慢慢换吧
