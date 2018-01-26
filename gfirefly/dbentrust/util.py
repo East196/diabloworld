@@ -6,7 +6,7 @@ Created on 2013-5-8
 '''
 
 from dbpool import dbpool
-from MySQLdb.cursors import DictCursor
+from pymysql.cursors import DictCursor
 from numbers import Number
 from gtwisted.utils import log
 import traceback

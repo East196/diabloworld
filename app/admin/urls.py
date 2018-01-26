@@ -1,7 +1,6 @@
 #-*-coding:utf8-*-
 
-import pymysql
-pymysql.install_as_MySQLdb()
+
 from pymysql.cursors import DictCursor
 from gfirefly.dbentrust.dbpool import dbpool
 
@@ -11,7 +10,7 @@ def getIncomeByDate(onedate):
     sql = "SELECT SUM(rbm) AS goal,COUNT(DISTINCT uid) AS cnt\
     FROM tb_recharge WHERE DATE(rtime)=DATE('%s') and boo=1;"%onedate
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()
@@ -25,7 +24,7 @@ def getDayConsume(onedate):
     """
     sql = "SELECT * FROM tb_bill WHERE DATE(recordDate)=DATE('%s');"%onedate
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -41,7 +40,7 @@ def getDayRecordList(index,limit = 10):
     """
     sql ="SELECT * FROM tb_statistics ORDER BY recorddate DESC LIMIT %s,%s;"%((index-1)*limit,index*limit)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

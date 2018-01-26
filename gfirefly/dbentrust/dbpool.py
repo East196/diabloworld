@@ -6,7 +6,7 @@ Created on 2013-5-8
 '''
 from DBUtils.PooledDB import PooledDB
 
-DBCS = {'MySQLdb':"MySQLdb",}
+DBCS = {'pymysql':"pymysql",}
 
 # class DBPool(PooledDB):
 #     """
@@ -28,7 +28,8 @@ class MultiDBPool(object):
         """
         self.dbpool = {}
         for dbkey,dbconfig in config.items():
-            _creator = DBCS.get(dbconfig.get('engine','MySQLdb'))
+            _creator = DBCS.get(dbconfig.get('engine','pymysql'))
+            print _creator
             creator = __import__(_creator)
             self.dbpool[dbkey] = PooledDB(creator,**dbconfig)
             

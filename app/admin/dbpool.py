@@ -5,7 +5,6 @@ Created on 2012-4-9
 @author: Administrator
 '''
 import pymysql
-pymysql.install_as_MySQLdb()
 from pymysql.cursors import DictCursor
 from twisted.python import log
 
@@ -27,7 +26,7 @@ class UCursor:
         '''
         self.conn = conn
         if cursorclass:
-            self.cursor = conn.cursor(cursorclass=cursorclass)
+            self.cursor = conn.cursor(cursorclass)
         else:
             self.cursor = conn.cursor()
         
@@ -186,7 +185,7 @@ class DBPool(object):
         try:
             conn = self.get(0)
             if dictcursor:
-                cursor = conn.cursor(cursorclass=DictCursor)
+                cursor = conn.cursor(DictCursor)
             else:
                 cursor = conn.cursor()
             cursor.execute(sqlstr)

@@ -7,7 +7,7 @@ Created on 2011-12-14
 
 from gfirefly.dbentrust.dbpool import dbpool
 import pymysql
-pymysql.install_as_MySQLdb()
+
 from pymysql.cursors import DictCursor
 
 PET_TRAIN_CONFIG = {}
@@ -33,7 +33,7 @@ def getPetExp():
     global PET_EXP
     sql = "SELECT * FROM tb_pet_experience"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -47,7 +47,7 @@ def getAllPetGrowthConfig():
     global PET_GROWTH
     sql = "SELECT * FROM tb_pet_growth"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -64,7 +64,7 @@ def getAllPetTemplate():
     global PET_TEMPLATE,shopAll,shopXy,PET_TYPE
     sql = "SELECT * FROM tb_pet_template ORDER BY `level` , `id`;"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -88,7 +88,7 @@ def getPetTrainConfig():
     global PET_TRAIN_CONFIG
     sql = "SELECT * FROM tb_pet_training "
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

@@ -6,7 +6,7 @@ Created on 2013-8-15
 '''
 from gfirefly.dbentrust.dbpool import dbpool
 import pymysql
-pymysql.install_as_MySQLdb()
+
 from pymysql.cursors import DictCursor
 from app.game.core.Item import Item
 from twisted.python import log
@@ -20,7 +20,7 @@ def getAll():
     global DROPOUT_CONFIG
     sql="select * from tb_dropout"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result=cursor.fetchall()
     cursor.close()

@@ -7,7 +7,7 @@ Created on 2013-5-8
 from memobject import MemObject,CACHE_TIMEOUT
 import util
 from gevent import Greenlet,queue
-from gevent_zeromq import zmq
+import zmq
 from gfirefly.utils.singleton import Singleton
 from util import ToDBAddress
 import traceback

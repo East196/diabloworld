@@ -7,7 +7,7 @@ Created on 2013-1-8
 from gfirefly.dbentrust.dbpool import dbpool
 
 import pymysql
-pymysql.install_as_MySQLdb()
+
 from pymysql.cursors import DictCursor
 
 
@@ -21,7 +21,7 @@ def getAllZhanYiInfo():
     global ALL_ZHANYI_INFO
     sql = "SELECT * FROM tb_zhanyi"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -36,7 +36,7 @@ def getAllZhangJieInfo():
     global ALL_ZHANGJIE_INFO,ALL_ZHANGJIE_GROP
     sql = "SELECT * FROM tb_zhangjie"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

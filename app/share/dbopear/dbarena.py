@@ -5,8 +5,6 @@ Created on 2012-7-1
 @author: Administrator
 '''
 from gfirefly.dbentrust.dbpool import dbpool
-import pymysql
-pymysql.install_as_MySQLdb()
 from pymysql.cursors import DictCursor
 from gfirefly.dbentrust import util
 import datetime
@@ -17,7 +15,7 @@ def getCharacterArenaInfo(characterId):
     '''
     sql = "SELECT * FROM tb_arena where characterId =%d"%characterId
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()
@@ -97,7 +95,7 @@ def getCharacterRivalList(ranklist):
     else:
         return []
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -110,7 +108,7 @@ def getCharacterBattleLog(characterId):
     sql = "SELECT * from tb_arena_log where tiaozhan = %d \
     or yingzhan = %d order by recordtime desc limit 0,5;"%(characterId,characterId)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

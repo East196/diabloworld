@@ -1,9 +1,0 @@
-[2013-11-20 16:09:56.738000]
-ERROR
-	Unhandled error in Deferred:
-[2013-11-20 16:09:56.738000]
-ERROR
-	Unhandled Error
-Traceback (most recent call last):
-Failure: twisted.internet.error.ConnectionRefusedError: Connection was refused by other side: 10061: 由于目标计算机积极拒绝，无法连接。.
-

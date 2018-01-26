@@ -10,10 +10,10 @@
 
 ### pymysql
 替换所有的MySQLdb调用为pymysql
-```
-import pymysql
-pymysql.install_as_MySQLdb()
-```
+替换所有的cusorclass=为空格
 
 ### firefly
 替换所有的firefly为gfirefly
+pip install pyzmq
+
+替换所有from gevent-zmq为空格

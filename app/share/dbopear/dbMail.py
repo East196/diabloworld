@@ -6,7 +6,7 @@ Created on 2011-8-8
 '''
 from gfirefly.dbentrust.dbpool import dbpool
 import pymysql
-pymysql.install_as_MySQLdb()
+
 from pymysql.cursors import DictCursor
 from twisted.python import log
 from gfirefly.dbentrust import util
@@ -37,7 +37,7 @@ def getAllLevelMail():
     global  LEVEL_MAIL
     sql="SELECT * FROM tb_levelmail"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -230,7 +230,7 @@ def getMailInfo(mailId):
     '''获取邮件详细信息'''
     sql = "select * from `tb_mail` where id = %d"%(mailId)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()

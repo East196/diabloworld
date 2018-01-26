@@ -11,7 +11,7 @@ def getAll():
     '''获取所有翻译信息'''
     sql="SELECT * FROM tb_language"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result=cursor.fetchall()
     cursor.close()

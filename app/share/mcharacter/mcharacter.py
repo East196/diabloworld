@@ -15,7 +15,7 @@ class Mcharacter(MemObject):
         @param guardname: str 殖民者的名称 
         @param updateTime: int 领地被更新的时间
         '''
-        MemObject.__init__(self, name, mc)
+        MemObject.__init__(self, name)
         self.id = pid
         self.level = 0
         self.profession = 0

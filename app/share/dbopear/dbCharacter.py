@@ -5,8 +5,6 @@ Created on 2013-8-14
 @author: lan (www.9miao.com)
 '''
 from gfirefly.dbentrust.dbpool import dbpool
-import pymysql
-pymysql.install_as_MySQLdb()
 from pymysql.cursors import DictCursor
 from twisted.python import log
 from gfirefly.dbentrust import util
@@ -48,13 +46,10 @@ def getALlCharacterBaseInfo():
     """
     sql = "SELECT `id`,`level`,`profession`,`nickname` FROM tb_character;";
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    print type(conn)
+    cursor = conn.cursor(cursor=DictCursor)
     cursor.execute(sql)
     result=cursor.fetchall()
     cursor.close()
     conn.close()
     return result
-
-
-    
-    

@@ -1,6 +1,6 @@
 {
   "master": {
-    "roothost": "172.16.6.12",
+    "roothost": "localhost",
     "rootport": 9999,
     "webport": 9998
   },
@@ -63,7 +63,7 @@
   "db": {
     "host": "localhost",
     "user": "root",
-    "passwd": "111",
+    "passwd": "",
     "port": 3306,
     "db": "anheisg",
     "charset": "utf8"

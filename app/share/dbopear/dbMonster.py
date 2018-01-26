@@ -6,7 +6,7 @@ Created on 2011-8-12
 '''
 from gfirefly.dbentrust.dbpool import dbpool
 import pymysql
-pymysql.install_as_MySQLdb()
+
 from pymysql.cursors import DictCursor
 
 All_MonsterInfo = {}
@@ -17,7 +17,7 @@ def getAllMonsterInfo():
     global All_MonsterInfo
     sql = "SELECT * FROM tb_monster"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

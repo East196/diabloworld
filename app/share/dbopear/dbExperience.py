@@ -6,7 +6,7 @@ Created on 2013-8-14
 '''
 from gfirefly.dbentrust.dbpool import dbpool
 import pymysql
-pymysql.install_as_MySQLdb()
+
 from pymysql.cursors import DictCursor
 
 
@@ -18,7 +18,7 @@ def getExperience_Config():
     global tb_Experience_config
     sql = "select * from tb_experience"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -30,7 +30,7 @@ def getVIPExp():
     global VIPEXP
     sql = "SELECT * FROM tb_vipexp"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result=cursor.fetchall()
     cursor.close()

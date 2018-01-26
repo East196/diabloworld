@@ -5,7 +5,7 @@ import time
 from socket import AF_INET,SOCK_STREAM,socket
 from thread import start_new
 import struct,json
-HOST='192.168.1.120'
+HOST='localhost'
 PORT=11009
 BUFSIZE=1024
 ADDR=(HOST , PORT)
@@ -46,13 +46,16 @@ def fight():
 login()
 rolelogin()
 
+fight()
 
-def start():
-    for i in xrange(100):
-        fight()
-
-for i in range(10):
-    start_new(start,())
-while True:
-    pass
+# 太快 10054
+# def start():
+#     time.sleep(0.1)
+#     for i in xrange(1):
+#         fight()
+#
+# for i in range(10):
+#     start()
+# while True:
+#     pass
 

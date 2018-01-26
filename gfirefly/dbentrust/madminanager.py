@@ -5,7 +5,7 @@ Created on 2013-5-22
 @author: lan (www.9miao.com)
 '''
 from gfirefly.utils.singleton import Singleton
-from gevent_zeromq import zmq 
+import zmq
 import gevent
 from util import excuteSQL
 # import marshal

@@ -6,7 +6,7 @@ Created on 2012-3-1
 '''
 from gfirefly.dbentrust.dbpool import dbpool
 import pymysql
-pymysql.install_as_MySQLdb()
+
 from pymysql.cursors import DictCursor
 import datetime
 
@@ -17,7 +17,7 @@ def getUserInfo(uid):
     '''
     sql = "select * from tb_user_character where id = %d"%(uid)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()
@@ -49,7 +49,7 @@ def getUserInfoByUsername(username,password):
     sql = "select * from `tb_register` where username = '%s'\
      and password = '%s'" %( username, password)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()
@@ -152,7 +152,7 @@ def getUserCharacterInfo(characterId):
     '''
     sql = "select town from tb_character where id = %d"%(characterId)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()
@@ -163,7 +163,7 @@ def CheckUserInfo(Uid):
     '''检测用户信息'''
     sql = "SELECT * from tb_register where username = '%s'"%Uid
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchone()
     cursor.close()

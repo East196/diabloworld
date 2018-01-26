@@ -6,7 +6,7 @@ Created on 2013-8-14
 '''
 from gfirefly.dbentrust.dbpool import dbpool
 import pymysql
-pymysql.install_as_MySQLdb()
+
 from pymysql.cursors import DictCursor
 
 ALL_SKILL_INFO = {}
@@ -25,7 +25,7 @@ def getBuffOffsetInfo():
     global BUFF_BUFF
     sql = "SELECT * FROM tb_buff_buff"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result=cursor.fetchall()
     cursor.close()
@@ -41,7 +41,7 @@ def getBuffAddition():
     global BUFF_SKILL
     sql = "SELECT * FROM tb_buff_skill"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result=cursor.fetchall()
     cursor.close()
@@ -55,7 +55,7 @@ def getSkillEffectByID(skillEffectID):
     '''获取技能效果ID'''
     sql = "SELECT * FROM tb_skill_effect where effectId=%d"%skillEffectID
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result=cursor.fetchone()
     cursor.close()
@@ -71,7 +71,7 @@ def getAllSkill():
     global  ALL_SKILL_INFO,SKILL_GROUP,PROFESSION_SKILLGROUP
     sql = "SELECT * FROM tb_skill_info"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -95,7 +95,7 @@ def getBuffEffect(buffEffectID):
     '''获取buff效果'''
     sql = "SELECT * FROM tb_buff_effect where buffEffectID = %d"%buffEffectID
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result=cursor.fetchone()
     cursor.close()
@@ -107,7 +107,7 @@ def getAllBuffInfo():
     global ALL_BUFF_INFO
     sql = "SELECT * FROM tb_buff_info"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result=cursor.fetchall()
     cursor.close()

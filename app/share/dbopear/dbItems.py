@@ -5,8 +5,6 @@ Created on 2011-7-14
 @author: lan (www.9miao.com)
 '''
 from gfirefly.dbentrust.dbpool import dbpool
-import pymysql
-pymysql.install_as_MySQLdb()
 from pymysql.cursors import DictCursor
 
 all_ItemTemplate = {} #所有的物品模板信息
@@ -19,7 +17,7 @@ def getAll_ItemTemplate():
     global all_ItemTemplate
     sql="select * from `tb_item_template`"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result=cursor.fetchall()
     cursor.close()
@@ -33,7 +31,7 @@ def getAllsetInfo():
     global ALL_SETINFO
     sql = "SELECT * from tb_equipmentset;"
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()

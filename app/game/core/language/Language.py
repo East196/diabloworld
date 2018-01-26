@@ -4,7 +4,7 @@ Created on 2012-2-21
 殖民管理器
 @author: jt
 '''
-from firefly.utils.singleton import Singleton
+from gfirefly.utils.singleton import Singleton
 from twisted.python import log
 from app.share.dbopear import dbLanguage
 

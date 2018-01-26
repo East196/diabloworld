@@ -5,7 +5,7 @@ Created on 2011-8-19
 '''
 from gfirefly.dbentrust.dbpool import dbpool
 import pymysql
-pymysql.install_as_MySQLdb()
+
 from pymysql.cursors import DictCursor
 from app.game.core.language.Language import Lg
 
@@ -53,7 +53,7 @@ def getFirendListByFlg(pid,flg):
     '''
     sql="SELECT playerId FROM tb_friend WHERE characterId=%s AND friendType=%s"%(pid,flg)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
@@ -71,7 +71,7 @@ def getFriendTopLevel(characterId,index,limit=20):
     sql = "SELECT id,nickname,level,coin \
     FROM tb_character WHERE `id`!=%d ORDER BY level LIMIT %d,%d;"%(characterId,index,limit)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result= cursor.fetchall()
     cursor.close()
@@ -84,7 +84,7 @@ def getFriendTopGuanqia(characterId,index,limit=20):
     sql = "SELECT id,nickname,`level`,coin FROM tb_character WHERE\
      `id`!=%d ORDER BY guanqia LIMIT %d,%d;"%(characterId,index,limit)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result= cursor.fetchall()
     cursor.close()
@@ -97,7 +97,7 @@ def getAllCharacterTop(index,limit=20):
     sql = "SELECT id,nickname,`level`,coin FROM\
      tb_character ORDER BY guanqia LIMIT %d,%d;"%(index,limit)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result= cursor.fetchall()
     cursor.close()
@@ -140,7 +140,7 @@ def getGuyongRecord(characterId):
     sql = "SELECT * FROM tb_guyong_record WHERE \
     characterId = %d ORDER BY reocrddate DESC LIMIT 0,10;"%(characterId)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result= cursor.fetchall()
     cursor.close()
@@ -153,7 +153,7 @@ def getGuYongList(pid):
     '''
     sql="SELECT playerId FROM tb_friend WHERE characterId=%s AND guyong=1"%(pid)
     conn = dbpool.connection()
-    cursor = conn.cursor(cursorclass=DictCursor)
+    cursor = conn.cursor(DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
